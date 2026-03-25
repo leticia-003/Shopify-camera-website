@@ -1,0 +1,143 @@
+<section class="section cart-page">
+  <div class="container cart-page__container" data-reveal>
+    <div class="cart-page__head">
+      <h1>{{ section.settings.heading }}</h1>
+      {% if cart.item_count > 0 %}
+        <p>{{ cart.item_count }} item{% if cart.item_count != 1 %}s{% endif %}</p>
+      {% endif %}
+    </div>
+
+    {% if cart.item_count == 0 %}
+      <div class="cart-empty card">
+        <h2>{{ section.settings.empty_title }}</h2>
+        <p>{{ section.settings.empty_text }}</p>
+        <a class="btn btn-primary" href="{{ section.settings.empty_button_link | default: routes.root_url }}">
+          {{ section.settings.empty_button_label }}
+        </a>
+      </div>
+    {% else %}
+      <form action="{{ routes.cart_url }}" method="post" novalidate class="cart-layout">
+        <div class="cart-items">
+          {% for item in cart.items %}
+            <article class="cart-item card">
+              <a class="cart-item__media" href="{{ item.url }}">
+                {% if item.image %}
+                  {{ item.image | image_url: width: 320 | image_tag: loading: 'lazy', alt: item.title }}
+                {% endif %}
+              </a>
+
+              <div class="cart-item__content">
+                <a class="cart-item__title" href="{{ item.url }}">{{ item.product.title }}</a>
+                {% if item.variant.title != 'Default Title' %}
+                  <p class="cart-item__variant">{{ item.variant.title }}</p>
+                {% endif %}
+
+                <div class="cart-item__prices">
+                  <span class="cart-item__price">{{ item.final_price | money }}</span>
+                  {% if item.original_price > item.final_price %}
+                    <span class="cart-item__compare">{{ item.original_price | money }}</span>
+                  {% endif %}
+                </div>
+
+                <div class="cart-item__controls">
+                  <label for="CartQty-{{ item.index | default: forloop.index }}">Qty</label>
+                  <input
+                    id="CartQty-{{ item.index | default: forloop.index }}"
+                    type="number"
+                    name="updates[]"
+                    value="{{ item.quantity }}"
+                    min="0"
+                  >
+                  <a
+                    class="cart-item__remove"
+                    href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0"
+                    aria-label="Remove {{ item.product.title }}"
+                  >
+                    Remove
+                  </a>
+                </div>
+              </div>
+
+              <p class="cart-item__line-total">{{ item.final_line_price | money }}</p>
+            </article>
+          {% endfor %}
+        </div>
+
+        <aside class="cart-summary card">
+          <h2>{{ section.settings.summary_heading }}</h2>
+
+          <div class="cart-summary__row">
+            <span>Subtotal</span>
+            <strong>{{ cart.items_subtotal_price | money }}</strong>
+          </div>
+
+          <div class="cart-summary__row cart-summary__row--total">
+            <span>Total</span>
+            <strong>{{ cart.total_price | money }}</strong>
+          </div>
+
+          <p class="cart-summary__note">{{ section.settings.summary_note }}</p>
+
+          <div class="cart-summary__actions">
+            <button class="btn btn-secondary" type="submit" name="update">Update Cart</button>
+            <button class="btn btn-primary" type="submit" name="checkout">Checkout</button>
+          </div>
+        </aside>
+      </form>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main cart",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shopping Cart"
+    },
+    {
+      "type": "text",
+      "id": "summary_heading",
+      "label": "Summary heading",
+      "default": "Order Summary"
+    },
+    {
+      "type": "text",
+      "id": "summary_note",
+      "label": "Summary note",
+      "default": "Taxes and shipping calculated at checkout."
+    },
+    {
+      "type": "text",
+      "id": "empty_title",
+      "label": "Empty cart title",
+      "default": "Your cart is empty"
+    },
+    {
+      "type": "text",
+      "id": "empty_text",
+      "label": "Empty cart text",
+      "default": "Looks like you have not added any products yet."
+    },
+    {
+      "type": "text",
+      "id": "empty_button_label",
+      "label": "Empty cart button label",
+      "default": "Continue shopping"
+    },
+    {
+      "type": "url",
+      "id": "empty_button_link",
+      "label": "Empty cart button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main cart"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,29 @@
+<section class="section">
+  <div class="container">
+    <h1 style="margin-bottom:1rem;">{{ collection.title }}</h1>
+    <div class="product-grid">
+      {% for product in collection.products %}
+        <article class="card">
+          <a href="{{ product.url }}">
+            {% if product.featured_image %}
+              {{ product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', alt: product.title }}
+            {% endif %}
+          </a>
+          <div class="card__content">
+            <h3>{{ product.title }}</h3>
+            <p class="price">{{ product.price | money }}</p>
+          </div>
+        </article>
+      {% else %}
+        <p>No products found in this collection.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main collection",
+  "settings": []
+}
+{% endschema %}

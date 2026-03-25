@@ -1,0 +1,132 @@
+{% liquid
+  assign featured_product = all_products[section.settings.product]
+  assign featured_variant = nil
+  if featured_product != blank
+    assign featured_variant = featured_product.selected_or_first_available_variant
+  endif
+
+  assign hero_price = nil
+  assign hero_compare_price = nil
+  assign hero_discount_label = section.settings.discount_label
+
+  if featured_variant != blank
+    assign hero_price = featured_variant.price
+    assign hero_compare_price = featured_variant.compare_at_price
+  elsif featured_product != blank
+    assign hero_price = featured_product.price
+    assign hero_compare_price = featured_product.compare_at_price
+  endif
+
+  if hero_compare_price > hero_price and hero_compare_price > 0
+    assign hero_discount_percent = hero_compare_price | minus: hero_price | times: 100.0 | divided_by: hero_compare_price | round
+    assign hero_discount_label = hero_discount_percent | append: '% OFF'
+  endif
+%}
+
+<section id="buy" class="lp-hero section">
+  <div class="container lp-hero__wrap" data-reveal>
+    <div class="lp-hero__copy">
+      <p class="lp-pill"><span class="lp-pill__icon" aria-hidden="true"><img src="{{ 'thunder.png' | asset_url }}" alt="" loading="lazy" width="14" height="14"></span><span>{{ section.settings.badge }}</span></p>
+      <h1 class="lp-title">
+        <span>{{ section.settings.heading_top }}</span>
+        <span class="lp-title__gradient">{{ section.settings.heading_gradient }}</span>
+      </h1>
+      <p class="lp-subtitle">{{ section.settings.description }}</p>
+
+      <div class="lp-rating-row">
+        <span class="lp-stars">★★★★★</span>
+        {% assign rating_parts = section.settings.rating_text | split: '(' %}
+        <strong class="lp-rating-score">{{ rating_parts[0] | strip }}</strong>
+        {% if rating_parts.size > 1 %}
+          <span class="lp-rating-reviews">({{ rating_parts[1] }}</span>
+        {% endif %}
+      </div>
+
+      <div class="lp-price-row">
+        {% if hero_price != blank %}
+          <span class="lp-price-current">{{ hero_price | money }}</span>
+          {% if hero_compare_price > hero_price %}
+            <span class="lp-price-old">{{ hero_compare_price | money }}</span>
+          {% endif %}
+        {% else %}
+          <span class="lp-price-current">{{ section.settings.fallback_price }}</span>
+          <span class="lp-price-old">{{ section.settings.fallback_compare_price }}</span>
+        {% endif %}
+        <span class="lp-discount">{{ hero_discount_label }}</span>
+      </div>
+
+      <div class="lp-actions">
+        {% if request.design_mode %}
+          <button class="btn btn-primary lp-btn" type="button">{{ section.settings.primary_label }}</button>
+        {% elsif featured_variant != blank and featured_variant.available %}
+          <form method="post" action="/cart/add" class="lp-atc-form">
+            <input type="hidden" name="id" value="{{ featured_variant.id }}">
+            <input type="hidden" name="quantity" value="1">
+            <input type="hidden" name="return_to" value="{{ routes.cart_url }}">
+            <button class="btn btn-primary lp-btn" type="submit" name="add">
+              {{ section.settings.primary_label }}
+            </button>
+          </form>
+        {% elsif featured_product != blank %}
+          <a class="btn btn-primary lp-btn" href="{{ featured_product.url }}">Choose Variant</a>
+        {% else %}
+          <button class="btn btn-primary lp-btn" type="button" disabled>{{ section.settings.primary_label }}</button>
+        {% endif %}
+        <a class="btn btn-secondary lp-btn" href="{{ routes.root_url }}#how-it-works">{{ section.settings.secondary_label }}</a>
+      </div>
+
+      {% if request.design_mode %}
+        <p class="lp-atc-note">Theme Editor preview does not add to cart. Test on storefront preview link.</p>
+      {% elsif featured_variant == blank %}
+        <p class="lp-atc-note">This product needs an available variant to add directly from the hero.</p>
+      {% endif %}
+
+      <div class="lp-meta-row">
+        <span>{{ section.settings.meta_left }}</span>
+        <span>{{ section.settings.meta_right }}</span>
+      </div>
+    </div>
+
+    <div class="lp-hero__media" data-reveal>
+      {% if section.settings.landing_image != blank %}
+        {{ section.settings.landing_image | image_url: width: 1400 | image_tag: loading: 'lazy', alt: section.settings.heading_top, class: 'lp-hero-image' }}
+      {% elsif section.settings.hero_image != blank %}
+        {{ section.settings.hero_image | image_url: width: 1400 | image_tag: loading: 'lazy', alt: section.settings.heading_top, class: 'lp-hero-image' }}
+      {% elsif 'landing-image.png' != blank %}
+        <img src="{{ 'landing-image.png' | asset_url }}" alt="{{ section.settings.heading_top | escape }}" loading="lazy" class="lp-hero-image" width="1400" height="900">
+      {% elsif featured_product != blank and featured_product.featured_image != blank %}
+        {{ featured_product.featured_image | image_url: width: 1400 | image_tag: loading: 'lazy', alt: featured_product.title, class: 'lp-hero-image' }}
+      {% elsif collections.all.products_count > 0 and collections.all.products.first.featured_image != blank %}
+        {{ collections.all.products.first.featured_image | image_url: width: 1400 | image_tag: loading: 'lazy', alt: 'MySelfie', class: 'lp-hero-image' }}
+      {% else %}
+        <div class="lp-placeholder" aria-hidden="true"></div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Landing hero",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Featured product" },
+    { "type": "text", "id": "badge", "label": "Badge", "default": "Trending — 10,000+ Sold" },
+    { "type": "text", "id": "heading_top", "label": "Heading line 1", "default": "See Yourself." },
+    { "type": "text", "id": "heading_gradient", "label": "Heading line 2", "default": "Shoot with Your Best Camera." },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "The magnetic wireless selfie monitor that lets you use your phone's superior rear camera while seeing yourself in real time. 4K quality. Zero lag. Pure magic." },
+    { "type": "text", "id": "rating_text", "label": "Rating text", "default": "4.8 (2,340 reviews)" },
+    { "type": "text", "id": "fallback_price", "label": "Fallback price", "default": "€45,99" },
+    { "type": "text", "id": "fallback_compare_price", "label": "Fallback compare-at price", "default": "€69,99" },
+    { "type": "text", "id": "discount_label", "label": "Discount label", "default": "35% OFF" },
+    { "type": "text", "id": "primary_label", "label": "Primary button label", "default": "Add to Cart" },
+    { "type": "text", "id": "secondary_label", "label": "Secondary button label", "default": "See How It Works" },
+    { "type": "text", "id": "meta_left", "label": "Meta left", "default": "Free Shipping" },
+    { "type": "text", "id": "meta_right", "label": "Meta right", "default": "30-Day Guarantee" },
+    { "type": "image_picker", "id": "landing_image", "label": "Landing image (first section)" },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero image (legacy)" }
+  ],
+  "presets": [
+    { "name": "Landing hero" }
+  ]
+}
+{% endschema %}

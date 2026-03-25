@@ -1,0 +1,23 @@
+<footer class="footer">
+  <div class="container footer__wrap">
+    <a class="logo" href="{{ routes.root_url }}">
+      <span class="logo-mark">MS</span>
+      <span>MySelfie</span>
+    </a>
+
+    <div class="footer__links">
+      <a href="{% if shop.privacy_policy != blank %}{{ shop.privacy_policy.url }}{% else %}#{% endif %}">Privacy Policy</a>
+      <a href="{% if shop.terms_of_service != blank %}{{ shop.terms_of_service.url }}{% else %}#{% endif %}">Terms of Service</a>
+      <a href="{% if shop.shipping_policy != blank %}{{ shop.shipping_policy.url }}{% else %}#{% endif %}">Shipping Info</a>
+    </div>
+
+    <p>© {{ 'now' | date: '%Y' }} MySelfie. All rights reserved.</p>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": []
+}
+{% endschema %}

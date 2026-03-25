@@ -1,0 +1,292 @@
+{
+  "sections": {
+    "landing_hero": {
+      "type": "landing-hero",
+      "settings": {
+        "badge": "Trending - 10,000+ Sold",
+        "heading_top": "See Yourself.",
+        "heading_gradient": "Shoot with Your Best Camera.",
+        "description": "The magnetic wireless selfie monitor that lets you use your phone's superior rear camera while seeing yourself in real-time. 4K quality. Zero lag. Pure magic.",
+        "rating_text": "4.8 (2,340 reviews)",
+        "fallback_price": "€45,99",
+        "fallback_compare_price": "€69,99",
+        "discount_label": "35% OFF",
+        "primary_label": "Add to Cart",
+        "secondary_label": "See How It Works",
+        "meta_left": "Free Shipping",
+        "meta_right": "30-Day Guarantee"
+      }
+    },
+    "landing_benefits": {
+      "type": "landing-benefits",
+      "settings": {
+        "kicker": "Why MySelfie?",
+        "heading": "Everything You Need for Better Content",
+        "description": "Designed for vloggers, content creators, and anyone who wants sharper selfies using their phone's best camera."
+      },
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "monitor.png",
+            "title": "4K HD Display",
+            "copy": "Crystal-clear 4K resolution at 30fps ensures you see every detail while filming with your rear camera."
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "wi-fi.png",
+            "title": "Wireless Screen Mirroring",
+            "copy": "Seamless wireless connection to your phone - no cables, no apps, just instant mirroring."
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "magnet.png",
+            "title": "Magnetic Attachment",
+            "copy": "Strong magnetic mount snaps onto the back of your phone in seconds. No clips, no hassle."
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "bluetooth.png",
+            "title": "Bluetooth Remote",
+            "copy": "Included Bluetooth remote shutter lets you capture photos and start recordings hands-free."
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "icon": "battery.png",
+            "title": "1500mAh Battery",
+            "copy": "Built-in rechargeable battery lasts up to 3 hours of continuous use on a single charge."
+          }
+        },
+        "benefit_6": {
+          "type": "benefit",
+          "settings": {
+            "icon": "arrow.png",
+            "title": "180° Rotation",
+            "copy": "Adjustable hinge lets you rotate the screen to the perfect viewing angle for any setup."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5",
+        "benefit_6"
+      ]
+    },
+    "landing_steps": {
+      "type": "landing-steps",
+      "settings": {
+        "kicker": "Simple setup",
+        "heading": "Ready in 3 Simple Steps",
+        "description": "No complicated setup. No apps to install. Just attach, connect, and create."
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Attach Magnetically",
+            "copy": "Snap the MySelfie monitor onto the back of your phone using the powerful built-in magnets. Works with MagSafe and metal ring accessories."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Connect Wirelessly",
+            "copy": "Turn on the monitor and it wirelessly mirrors your phone screen. No app needed - it connects automatically in seconds."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Create Amazing Content",
+            "copy": "Flip to your rear camera, see yourself on the monitor, and capture stunning 4K photos and videos. Use the Bluetooth remote for hands-free control."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ]
+    },
+    "landing_testimonials": {
+      "type": "landing-testimonials",
+      "settings": {
+        "kicker": "Customer love",
+        "heading": "What Our Customers Say",
+        "description": "Join thousands of happy creators who upgraded their content game.",
+        "summary": "4.8 out of 5 based on 2,340 reviews"
+      },
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "stars": "★★★★★",
+            "title": "Game changer for my TikTok videos!",
+            "copy": "I've been struggling with blurry front camera selfies for ages. This little monitor changed everything - I can finally use my rear camera and still see myself. The quality difference is insane. My followers immediately noticed!",
+            "name": "Sarah M.",
+            "location": "Los Angeles, CA",
+            "when": "2 weeks ago"
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "stars": "★★★★★",
+            "title": "Perfect for vlogging on the go",
+            "copy": "The magnetic attachment is super strong and the wireless connection works flawlessly. I was worried about lag but there's literally none. Battery lasts me through a full day of shooting. Highly recommend!",
+            "name": "James K.",
+            "location": "London, UK",
+            "when": "1 month ago"
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "stars": "★★★★☆",
+            "title": "Love it - way better than a selfie mirror",
+            "copy": "I tried those cheap clip-on mirrors before and they were useless. This is a real screen that mirrors exactly what your camera sees. The Bluetooth remote is a nice bonus for group photos. Only wish it was slightly bigger.",
+            "name": "Emily R.",
+            "location": "Toronto, CA",
+            "when": "3 weeks ago"
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "stars": "★★★★★",
+            "title": "My content quality went through the roof",
+            "copy": "As a content creator, image quality matters. The rear camera on my iPhone is so much better than the front. This monitor lets me use it for everything - selfies, vlogs, live streams. Worth every penny.",
+            "name": "Mike D.",
+            "location": "New York, NY",
+            "when": "1 week ago"
+          }
+        },
+        "review_5": {
+          "type": "review",
+          "settings": {
+            "stars": "★★★★★",
+            "title": "So easy to set up, even my mom uses it",
+            "copy": "I bought one for myself and one for my mom who loves FaceTiming and taking photos. The magnetic snap is so satisfying and it connects wirelessly in like 2 seconds. No complicated apps or settings. Just works!",
+            "name": "Lisa T.",
+            "location": "Sydney, AU",
+            "when": "2 months ago"
+          }
+        },
+        "review_6": {
+          "type": "review",
+          "settings": {
+            "stars": "★★★★☆",
+            "title": "Great for real estate photography too",
+            "copy": "I use this for walkthrough videos of properties. Being able to see myself while using the higher quality rear camera makes my videos look so much more professional. Clients have been very impressed. Battery life could be a bit longer for longer shoots.",
+            "name": "Carlos P.",
+            "location": "Miami, FL",
+            "when": "1 month ago"
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5",
+        "review_6"
+      ]
+    },
+    "landing_faq": {
+      "type": "landing-faq",
+      "settings": {
+        "kicker": "Got questions?",
+        "heading": "Frequently Asked Questions"
+      },
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "Does it work with both iPhone and Android?",
+            "answer": "Yes. MySelfie is compatible with all iPhones (iPhone 8 and newer) and Android devices. It uses wireless screen mirroring that works with both operating systems."
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "Do I need to install any app?",
+            "answer": "No app is required. Pair and mirror directly from your phone in seconds."
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "How strong is the magnetic attachment?",
+            "answer": "The built-in magnets are strong enough for everyday handheld filming and stable shooting."
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Is there any lag or delay on the screen?",
+            "answer": "Latency is very low and optimized for real-time framing while recording."
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does the battery last?",
+            "answer": "Battery life depends on usage, but it is designed for extended shooting sessions on a single charge."
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "What's included in the box?",
+            "answer": "Monitor unit, charging cable, magnetic ring accessory, Bluetooth remote, and quick-start guide."
+          }
+        },
+        "faq_7": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "We offer a 30-day money-back guarantee. Contact support within 30 days for a return."
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7"
+      ]
+    },
+    "landing_cta": {
+      "type": "landing-cta",
+      "settings": {
+        "heading": "Ready to Level Up Your Content?",
+        "description": "Join 10,000+ creators who already upgraded to sharper, clearer, more professional selfies and videos.",
+        "button_label": "Get MySelfie - €45,99",
+        "note": "35% off for a limited time"
+      }
+    }
+  },
+  "order": [
+    "landing_hero",
+    "landing_benefits",
+    "landing_steps",
+    "landing_testimonials",
+    "landing_faq",
+    "landing_cta"
+  ]
+}

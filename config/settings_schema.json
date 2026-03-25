@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Theme settings",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      },
+      {
+        "type": "text",
+        "id": "font_heading",
+        "label": "Heading font family",
+        "default": "'Space Grotesk', sans-serif"
+      },
+      {
+        "type": "text",
+        "id": "font_body",
+        "label": "Body font family",
+        "default": "'Manrope', sans-serif"
+      },
+      {
+        "type": "color",
+        "id": "brand_accent",
+        "label": "Brand accent",
+        "default": "#0ea5e9"
+      },
+      {
+        "type": "color",
+        "id": "bg_start",
+        "label": "Background gradient start",
+        "default": "#f5f8ff"
+      },
+      {
+        "type": "color",
+        "id": "bg_end",
+        "label": "Background gradient end",
+        "default": "#fdf4ff"
+      }
+    ]
+  }
+]

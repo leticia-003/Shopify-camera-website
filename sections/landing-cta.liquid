@@ -1,0 +1,28 @@
+<section class="section lp-cta-shell">
+  <div class="container" data-reveal>
+    <div class="lp-cta-card">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.description }}</p>
+      <div class="lp-cta-actions">
+        <a href="{{ section.settings.button_link }}" class="btn btn-primary lp-btn">{{ section.settings.button_label }}</a>
+        <span>{{ section.settings.note }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Landing CTA",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Ready to Level Up Your Content?" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Join 10,000+ creators who already upgraded to sharper, clearer, more professional selfies and videos." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Get MySelfie - €45,99" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "text", "id": "note", "label": "Small note", "default": "35% off for a limited time" }
+  ],
+  "presets": [
+    { "name": "Landing CTA" }
+  ]
+}
+{% endschema %}

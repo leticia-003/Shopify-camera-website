@@ -1,0 +1,24 @@
+<header class="site-header">
+  <div class="container site-header__wrap">
+    <a class="logo" href="{{ routes.root_url }}">
+      <span class="logo-mark">MS</span>
+      <span>MySelfie</span>
+    </a>
+
+    <nav class="nav-inline" aria-label="Main navigation">
+      <a href="{{ routes.root_url }}#features">Features</a>
+      <a href="{{ routes.root_url }}#how-it-works">How It Works</a>
+      <a href="{{ routes.root_url }}#reviews">Reviews</a>
+      <a href="{{ routes.root_url }}#faq">FAQ</a>
+    </nav>
+
+    <a class="btn btn-primary header-buy" href="{{ routes.root_url }}#buy">Buy Now</a>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": []
+}
+{% endschema %}

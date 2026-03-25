@@ -1,0 +1,58 @@
+<section id="how-it-works" class="section">
+  <div class="container">
+    <div class="lp-section-head" data-reveal>
+      <p class="lp-kicker">{{ section.settings.kicker }}</p>
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.description }}</p>
+    </div>
+
+    <div class="lp-steps-grid">
+      {% for block in section.blocks %}
+        <article class="lp-step{% if block.settings.image == blank %} lp-step--text-only{% endif %}" {{ block.shopify_attributes }} data-reveal>
+          {% if block.settings.image != blank %}
+            <div class="lp-step-media">
+              {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', alt: block.settings.title }}
+            </div>
+          {% endif %}
+          <div class="lp-step-copy">
+            <span class="lp-step-number">{{ forloop.index | prepend: '0' }}</span>
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.copy }}</p>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Landing steps",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Simple setup" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Ready in 3 Simple Steps" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "No complicated setup. No apps to install. Just attach, connect, and create." }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Attach Magnetically" },
+        { "type": "textarea", "id": "copy", "label": "Copy", "default": "Snap the monitor onto your phone and start shooting in seconds." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing steps",
+      "blocks": [
+        { "type": "step", "settings": { "title": "Attach Magnetically", "copy": "Snap the monitor onto the back of your phone using the built-in magnet system." } },
+        { "type": "step", "settings": { "title": "Connect Wirelessly", "copy": "Turn on the monitor and it mirrors your phone screen automatically." } },
+        { "type": "step", "settings": { "title": "Create Amazing Content", "copy": "Flip to your rear camera and capture photos and videos with perfect framing." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

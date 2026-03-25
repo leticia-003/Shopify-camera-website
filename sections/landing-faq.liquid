@@ -1,0 +1,56 @@
+<section id="faq" class="section">
+  <div class="container lp-faq-wrap">
+    <div class="lp-section-head" data-reveal>
+      <p class="lp-kicker">{{ section.settings.kicker }}</p>
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+
+    <div class="lp-faq-list" data-reveal>
+      {% for block in section.blocks %}
+        <details class="lp-faq-item" {{ block.shopify_attributes }}>
+          <summary class="lp-faq-question">
+            <span>{{ block.settings.question }}</span>
+            <span class="lp-faq-chevron" aria-hidden="true"></span>
+          </summary>
+          <div class="lp-faq-answer">
+            <p>{{ block.settings.answer }}</p>
+          </div>
+        </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Landing FAQ",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Got questions?" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Frequently Asked Questions" }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ item",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Does it work with both iPhone and Android?" },
+        { "type": "textarea", "id": "answer", "label": "Answer", "default": "Yes. It works with iPhone and Android devices that support wireless screen mirroring." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing FAQ",
+      "blocks": [
+        { "type": "faq", "settings": { "question": "Does it work with both iPhone and Android?", "answer": "Yes. It supports both iPhone and Android devices with screen mirroring." } },
+        { "type": "faq", "settings": { "question": "Do I need to install any app?", "answer": "No app is required. Pair and mirror directly from your phone." } },
+        { "type": "faq", "settings": { "question": "How strong is the magnetic attachment?", "answer": "The built-in magnets are strong enough for normal handheld movement and daily use." } },
+        { "type": "faq", "settings": { "question": "Is there any lag on the screen?", "answer": "Latency is minimal and optimized for real-time framing while recording." } },
+        { "type": "faq", "settings": { "question": "How long does the battery last?", "answer": "Battery life depends on usage, but it is designed for extended shooting sessions." } },
+        { "type": "faq", "settings": { "question": "What is included in the box?", "answer": "Monitor unit, charging cable, magnetic ring accessory, Bluetooth remote, and quick-start guide." } },
+        { "type": "faq", "settings": { "question": "What is your return policy?", "answer": "We offer a 30-day money-back guarantee. If it is not right for you, contact support within 30 days for a return." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,47 @@
+<section class="section">
+  <div class="container">
+    <h2 style="margin-bottom:1.2rem;">{{ section.settings.title }}</h2>
+
+    <div class="product-grid">
+      {% for product in collections.all.products limit: section.settings.products_to_show %}
+        <article class="card">
+          <a href="{{ product.url }}">
+            {% if product.featured_image %}
+              {{ product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', alt: product.title }}
+            {% else %}
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </a>
+          <div class="card__content">
+            <h3 style="font-size:1.05rem;">{{ product.title }}</h3>
+            <p class="price">{{ product.price | money }}</p>
+            <a class="btn btn-secondary" href="{{ product.url }}">View product</a>
+          </div>
+        </article>
+      {% else %}
+        {% for i in (1..4) %}
+          <article class="card">
+            {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+            <div class="card__content">
+              <h3>Sample product {{ i }}</h3>
+              <p class="price">{{ 4999 | money }}</p>
+            </div>
+          </article>
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured products",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Featured products" },
+    { "type": "range", "id": "products_to_show", "label": "Products to show", "min": 2, "max": 12, "step": 1, "default": 8 }
+  ],
+  "presets": [
+    { "name": "Featured products" }
+  ]
+}
+{% endschema %}

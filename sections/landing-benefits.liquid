@@ -1,0 +1,60 @@
+<section id="features" class="section lp-surface">
+  <div class="container">
+    <div class="lp-section-head" data-reveal>
+      <p class="lp-kicker">{{ section.settings.kicker }}</p>
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.description }}</p>
+    </div>
+
+    <div class="lp-benefits-grid">
+      {% for block in section.blocks %}
+        <article class="lp-benefit-card" {{ block.shopify_attributes }} data-reveal>
+          <div class="lp-icon-chip">
+            {% if block.settings.icon contains '.png' %}
+              <img src="{{ block.settings.icon | asset_url }}" alt="" loading="lazy" width="24" height="24">
+            {% else %}
+              {{ block.settings.icon }}
+            {% endif %}
+          </div>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.copy }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Landing benefits",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Why MySelfie?" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Everything You Need for Better Content" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Designed for vloggers, content creators, and anyone who wants sharper selfies using their phone's best camera." }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Icon", "default": "📺" },
+        { "type": "text", "id": "title", "label": "Title", "default": "4K HD Display" },
+        { "type": "textarea", "id": "copy", "label": "Copy", "default": "Crystal-clear resolution helps you frame every shot with confidence." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing benefits",
+      "blocks": [
+        { "type": "benefit", "settings": { "icon": "monitor.png", "title": "4K HD Display", "copy": "Crystal-clear 4K resolution at 30fps ensures you see every detail while filming with your rear camera." } },
+        { "type": "benefit", "settings": { "icon": "wi-fi.png", "title": "Wireless Screen Mirroring", "copy": "Seamless wireless connection to your phone — no cables, no apps, just instant mirroring." } },
+        { "type": "benefit", "settings": { "icon": "magnet.png", "title": "Magnetic Attachment", "copy": "Strong magnetic mount snaps onto the back of your phone in seconds. No clips, no hassle." } },
+        { "type": "benefit", "settings": { "icon": "bluetooth.png", "title": "Bluetooth Remote", "copy": "Included Bluetooth remote shutter lets you capture photos and start recordings hands-free." } },
+        { "type": "benefit", "settings": { "icon": "battery.png", "title": "1500mAh Battery", "copy": "Built-in rechargeable battery lasts up to 3 hours of continuous use on a single charge." } },
+        { "type": "benefit", "settings": { "icon": "arrow.png", "title": "180° Rotation", "copy": "Adjustable hinge lets you rotate the screen to the perfect viewing angle for any setup." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
