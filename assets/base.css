@@ -25,6 +25,7 @@ body {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 30px;
 }
 
 body {
@@ -968,6 +969,10 @@ p {
 }
 
 @media (max-width: 780px) {
+  html {
+    scroll-padding-top: 92px;
+  }
+
   .site-header__wrap {
     min-height: 74px;
   }
